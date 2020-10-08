@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $("button").click(function () {
+        // get 요청을 하고 콜백함수를 통해 처리하게 된다.
+        $.get("/ajax/test", function (data, status) {
+          console.log("hiho")
+          console.log(data);
+          // alert("Data: " + data + "\nStatus: " + status);
+        });
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <button>AJax trainning</button>
+  <!-- / -->
+  <form action="/test" method="GET">
+    <!-- hobby = 축구 -->
+    <input type="text" name="hobby">
+    <input type="submit" value="확인" />
+  </form>
+</body>
+
+</html>

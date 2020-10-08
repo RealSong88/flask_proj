@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="/static/style.css"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>회원관리서비스</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">홈</a></li>
+                <li><a href="/reporters">회원목록</a></li>
+                <li><a href="/posts">기사목록</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        {% block section %}
+        {% endblock %}
+    </section>
+    <footer>
+        (주)우리나라
+    </footer>
+</body>
+</html>

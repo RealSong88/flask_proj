@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block section %}
+<p>사이트 소개</p>
+
+<div id="demo">
+    <h2>XMLHttpRequest 객체</h2>
+    <button type="button" onclick="loadDoc()">AJAX 요청</button>
+    <button type="button" id="jquery_id">JQUERY AJAX 요청</button>
+</div>
+<div id="statechange">
+
+</div>
+
+<script>
+    function loadDoc() {
+        var text = ""
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            text += "<br>-----";
+            text += "<br>readyState: " + this.readyState;
+            text += "<br>status: " + this.status;
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById('demo').innerHTML =
+                    this.responseText;
+                document.getElementById('statechange').innerHTML =
+                    text;
+            }
+        };
+        xhttp.open('GET', '/ajax', true);
+        xhttp.send();
+    }
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#jquery_id").click(function () {
+            $("#demo").load("/jquery_ajax");
+        });
+    });
+</script>
+{% endblock %}

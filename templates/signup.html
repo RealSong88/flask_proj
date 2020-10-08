@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block section %}
+<script>
+    $(document).ready(function () {
+        $("#checkid_id").click(function () {
+            var nick_name = $("#nick_name_id").val();
+            $.get("/ajax/checkid?nick_name=" + nick_name, function (data) {
+                console.log(data);
+                if (data > 0) {
+                    console.log("사용불가");
+                    $("#checkid_info").attr('style', 'display:block;').text("사용불가")
+                } else {
+                    console.log("사용가능");
+                    $("#checkid_info").attr('style', 'display:block;').text("사용가능")
+                }
+            });
+        });
+    })
+</script>
+<form action="/signup" method="POST">
+    <ul>
+        <li><input type="text" name="nick_name" id="nick_name_id"><button type="button" id="checkid_id">중복확인</button>
+            <div class="info" id="checkid_info">중복확인</div>
+        </li>
+        <li><input type="text" name="phone" id=""></li>
+    </ul>
+    <button type=submint>회원가입</button>
+</form>
+{% endblock %}
